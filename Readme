@@ -1,0 +1,37 @@
+## juliaのインストール
+1. juliaをインストール(URL: https://julialang.org/ )　
+   参考：https://zenn.dev/ohno/articles/cf2b4d09d4480e
+2. 好みのeditorがなければ，vscodeがおすすめ
+   >> 参考:https://qtech-blog.com/detail/julia-install-vscode/, https://www.julia-vscode.org/
+
+## 使い方
+1. stdinを確認（入力変数の説明あり）(通常stdinは標準入力の意味だがjuliaの関数になってる)
+    >> windowsとmac(linux)でpathの書き方が違うので注意
+    >> windowsだと"/"ではなく"\\"を使う？
+2. Main.jlを実行
+    >> vscodeなら，左のメニューバーの”Extension"から"julia"で検索したときに出てくるパッケージ*Julia*(julialangが提供)を入れると，エディタ画面の右上の三角マークから実行できる．（他にも色々）
+
+
+## 何ができる？
+1. csv fileからデータを読む
+2. 最大推力や作動時間を計算する
+3. スラストカーブをかく
+
+## ファイル構成(この関係は保つこと)
+- Project folder
+    - functions(いろんな機能の関数)
+        - engine_property.jl
+        - find_stem_and_max.jl
+        - math.jl
+        - plots_thrust.jl
+        - read_data.jl
+        - variables.jl（グローバル変数をここで定義しているので，参照すると良い）
+    - $workdir (stdin中のinput.workdirに対応)
+        - "xxx".csv
+    - Main.jl
+    - stdin
+    - Readme
+
+##　発展の余地
+1. シミュ用のデータを書き出すコード
+2. 推力以外にも圧力や温度センサーのデータを処理するコード
