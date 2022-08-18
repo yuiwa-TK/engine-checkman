@@ -1,10 +1,31 @@
 # Run code
-vscode等のterminalで作業ディレクトリ（Main.jlがある場所）に移動しjuliaを起動.
+vscode等のterminalde
+でプロジェクトディレクトリ（Main.jlがある場所）に移動しjuliaを起動.
 
 ```
 julia
 ```
 
+shell modeに移行
+```
+julia> ;
+```
+とすると
+```
+shell>
+```
+となる．
+
+プロジェクトディレクトリ\${PROJECT_DIR}の下に,作業ディレクトリ（${WORK_DIR}:Main.jlがある場所）と，その中に読みたい生データ（.csvで書かれている）があることを確認(後述のファイル構成の章を確認)．\${xx}はuserが設定した名前を意味．
+   　
+```
+ls ./${WORK_DIR}
+```
+などとすると
+```
+${filename}.csv
+```
+が見られるはず（shell modeで通常のshell scriptが使える）．
 
 pkgモードに入る
 ```
@@ -36,9 +57,10 @@ include("Main.jl")
    2. keyboardの "]"のキーをおし，pkgモードに入る．
    3. ```add Plots, Printf, Statistics```とすると，Plots, Printf, Statisticsの３つのライブラリがインストールされる．（その他実行して，xxというライブラリがありませんとエラーを吐いたら同様にインストールする．)
 
-4. engine-checkmanのコード一式をgithubからinstallする．
-   1. 自分のPCに
-   2. githubのページの緑
+4. engine-checkmanのコード一式をgithubからinstallする．(以下のどちらかの方法で)
+   - 自分のPCにgit clone
+
+   - githubのページの緑ボタン（Code)を押してダウンロード
 ---
 
 
