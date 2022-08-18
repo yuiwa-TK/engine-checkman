@@ -23,9 +23,9 @@ mutable struct Data <:ResultType
     time       :: AbstractArray{AbstractFloat}
     thrust     :: AbstractArray{AbstractFloat}
     # if you need
-        # pressure    :: AbstractArray{AbstractFloat}
-        # temperrature:: AbstractArray{AbstractFloat}
-        # chdata :: AbstractArray{AbstractArray{AbstractFloat}}
+        # Pressure    :: AbstractArray{AbstractFloat}
+        # Temperature :: AbstractArray{AbstractFloat}
+        # Chdata :: AbstractArray{AbstractArray{AbstractFloat}}
 
     Data() = new()
 end

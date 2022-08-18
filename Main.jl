@@ -7,7 +7,8 @@ include("stdin")
 
 function initialize()
     #input
-    @show input= read_input()
+    input= read_input()
+    @show input
         
     #constructor "data", "time", "thrust"
         data  = read_rawdata(input)
@@ -56,6 +57,3 @@ println("===========================================")
         @show input.calibration_coef,input.calibration_offset
         @show filename = input.workdir*input.figname
         plot_thrustcurve(time,thrust,filename)
-
-
-
