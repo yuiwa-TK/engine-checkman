@@ -1,0 +1,29 @@
+"""
+workdir: csvファイルが置いてある場所．解析結果の図もこのディレクトリの下に出力される．
+filename:csvファイルの名前
+ch_thrust:ロードセルが繋がっていたロガーのchannel番号
+ch_pressure:圧力計が繋がっていたロガーのchannel番号
+ch_temperature:温度計が繋がっていたロガーのchannel番号
+calibration_coef:ロードセルの校正係数（傾き）
+calibration_offset:ロードセルの校正係数（オフセット）
+threshold_worktime:作動時間を求める際の閾値[割合表記]．
+                    max(thrust)*threshold_worktime以上の推力で作動時間を定義
+mode_thrustmax:最大推力を求めるためのアルゴリズム
+refval_thrustmax:最大推力を求める際に使用する参照値（詳細は"find_stem_and_max.jl"を参照)
+figname:最後に出力するスラストカーブ(.pdf)ファイルの名前．拡張子を（.png）や（.jpeg)などにもできる．
+"""
+function read_input()
+    input = Input()
+    input.workdir="./K1000-220605-2/"
+    input.filename="Test0011.csv"
+    input.ch_thrust=1
+    input.ch_pressure=nothing
+    input.ch_temperature=nothing
+    input.calibration_coef=0.85788
+    input.calibration_offset=0.0
+    input.threshold_worktime=0.05
+    input.mode_thrustmax="stemcut"
+    input.refval_thrustmax =0.05
+    input.figname = "fig.pdf"
+    return input
+end
