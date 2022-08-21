@@ -1,0 +1,8 @@
+┌ Info: Dict{Symbol, Any}(:filename => "Test0011.csv", :ch_thrust => 1, :ch_temperature => nothing, :workdir => "./K1000-220605-2/", :refval_thrustmax => 0.05, :ch_pressure => nothing, :calibration_offset => 0.0, :mode_thrustmax => "stemcut", :calibration_coef => 0.85788, :figname => "fig.pdf", :threshold_worktime => 0.05)
+└ @ Main /Users/iwatani/Documents/MyDocuments/2022/FTE/Main.jl:41
+┌ Info: 
+│ start:313.499,end:319.454,Work_time=5.954999999999984
+└ @ Main /Users/iwatani/Documents/MyDocuments/2022/FTE/functions/get_engine_property.jl:41
+┌ Info: 
+│  mode = Integral,Total Impulse=1427.4477051129743
+└ @ Main /Users/iwatani/Documents/MyDocuments/2022/FTE/functions/get_engine_property.jl:66
