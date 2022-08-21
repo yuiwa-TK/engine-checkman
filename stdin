@@ -14,8 +14,8 @@ figname:最後に出力するスラストカーブ(.pdf)ファイルの名前．
 """
 function read_input()
     input = Input()
-    input.workdir="./K1000-220605-2/"
-    input.filename="Test0011.csv"
+    input.workdir="./Sample_workdir/"
+    input.filename="sample.csv"
     input.ch_thrust=1
     input.ch_pressure=nothing
     input.ch_temperature=nothing
