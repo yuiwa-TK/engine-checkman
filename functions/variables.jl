@@ -2,7 +2,7 @@ abstract type ParamterType end
 
 mutable struct Input <:ParamterType
     workdir::String    # directory name that contains "xxx.csv" file
-    filename::String   # filename of csv file to read
+    filename::String   # name of csv file that has raw data
     ch_thrust::Union{Int,Nothing}
     ch_pressure::Union{Int,Nothing}
     ch_temperature::Union{Int,Nothing}
@@ -17,7 +17,7 @@ mutable struct Input <:ParamterType
 end
 
 abstract type ResultType end
-mutable struct Data <:ResultType
+mutable struct RawData <:ResultType
     head       :: AbstractArray{String}
     condition  :: AbstractArray{String}
     time       :: AbstractArray{AbstractFloat}
@@ -27,7 +27,7 @@ mutable struct Data <:ResultType
         # Temperature :: AbstractArray{AbstractFloat}
         # Chdata :: AbstractArray{AbstractArray{AbstractFloat}}
 
-    Data() = new()
+    RawData() = new()
 end
 
 mutable struct Thrust{T<:AbstractFloat}  <:ResultType

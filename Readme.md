@@ -1,3 +1,11 @@
+## このコードで何ができる？
+1. ロガーが出力するcsv fileからデータを読む
+2. 最大推力や作動時間を計算する
+3. スラストカーブをかく．
+   1. 生データは，html形式で出力(拡大縮小したりできるよ！)
+   2. いい感じに整えたプロットはpdf(pngなども可，stdinで指定）でファイル保存．
+---
+
 # Run code
 vscode等のterminalde
 でプロジェクトディレクトリ（Main.jlがある場所）に移動しjuliaを起動.
@@ -16,7 +24,7 @@ shell>
 ```
 となる．
 
-プロジェクトディレクトリ\${PROJECT_DIR}の下に,作業ディレクトリ（${WORK_DIR}:Main.jlがある場所）と，その中に読みたい生データ（.csvで書かれている）があることを確認(後述のファイル構成の章を確認)．\${xx}はuserが設定した名前を意味．
+プロジェクトディレクトリ\${PROJECT_DIR}の下に,作業ディレクトリ（${WORK_DIR}:Main.jlがある場所）と，その中に読みたい生データ（\${filename}.csv）があることを確認(後述のファイル構成の章を確認)．\${xx}はuserが設定した名前を意味．
    　
 ```
 ls ./${WORK_DIR}
@@ -32,7 +40,7 @@ pkgモードに入る
 julia> ] #Pkg mode
 ```
 
-幾つかのパッケージをインストールする
+幾つかのパッケージをインストールする(次項の環境のセットアップが済んでいれば不要)
 ```
 (@v1.x)pkg> add Plots, Statistics, Printf, DelimitedFiles
 ```
@@ -51,11 +59,13 @@ include("Main.jl")
    > 参考:https://qtech-blog.com/detail/julia-install-vscode/
 
    > https://www.julia-vscode.org/
+   
+   1. vscodeのinstall後，左メニューバーにあるExtensionから"Julia" (開発者：julialang)をinstall
 
 3. juliaの環境に必要なライブラリをインストールする．
-   1. terminal で juliaとする.
+   1. terminal で ```julia```とする.
    2. keyboardの "]"のキーをおし，pkgモードに入る．
-   3. ```add Plots, Printf, Statistics```とすると，Plots, Printf, Statisticsの３つのライブラリがインストールされる．（その他実行して，xxというライブラリがありませんとエラーを吐いたら同様にインストールする．)
+   3. 例えば```add Plots, Printf, Statistics```とすると，Plots, Printf, Statisticsの３つのライブラリがインストールされる．（もし実行して，xxというライブラリがありませんとエラーを吐いたら同様にインストールする．)
 
 4. engine-checkmanのコード一式をgithubからinstallする．(以下のどちらかの方法で)
    - 自分のPCにgit clone
@@ -86,17 +96,12 @@ include("Main.jl")
     とする．
 
 ---
-## このコードは何をするか
-1. ロガーが出力するcsv fileからデータを読む
-2. 最大推力や作動時間を計算する
-3. スラストカーブをかく．pdfなどでファイル保存．
 
----
 ## ファイル構成
 >ファイルの位置関係は保つこと
 - Project folder
   - functions(いろんな機能の関数)
-    - engine_property.jl
+    - get_engine_property.jl
     - find_stem_and_max.jl
     - math.jl
     - plots_thrust.jl

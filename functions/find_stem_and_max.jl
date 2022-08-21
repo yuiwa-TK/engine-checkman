@@ -12,7 +12,7 @@ function find_stem_and_maxthrust(time::Time,thrust::Thrust; mode, refval)
  
     #max thrust
     if mode =="stemcut" 
-        # おすすめ，refval = 0.05s>sampling_dtくらいがいい？
+        # おすすめ，refval = 0.05sくらいがいい？
         # time.stem+refval[s]のデータの中から最大を求める
         idleft          = argmin(abs.(time.data.-(time.stem+refval)))
         id_temp         = argmax(thrust.data[idleft:end])

@@ -27,26 +27,26 @@ function read_rawdata(input::Input)
        return [input.calibration_coef,input.calibration_offset]
    end
    
-   data     = Data()
-   filename = input.workdir*input.filename
-   rawdata  = readdlm(filename,',')
+   rawdata   = RawData()
+   filename  = input.workdir*input.filename
+   buffer    = readdlm(filename,',')
    
    # read header
    nrow_head = 14
-   data.head = rawdata[1:nrow_head,1]
-   data.head = overwrite_header!(data.head)
+   rawdata.head = buffer[1:nrow_head,1]
+   rawdata.head = overwrite_header!(rawdata.head)
 
    # read condition (channel 数が増えるとここを書き換える)
-   data.condition = string.(rawdata[1:nrow_head])
-   data.condition[3] = exptime(rawdata)
-   data.condition[12:13] .= string(overwrite_calibration!(input))
+   rawdata.condition = string.(buffer[1:nrow_head])
+   rawdata.condition[3] = exptime(buffer)
+   rawdata.condition[12:13] .= string(overwrite_calibration!(input))
 
    # read time data
-   data.time = rawdata[nrow_head+1:end,1]
+   rawdata.time = buffer[nrow_head+1:end,1]
 
    # read channel data(thrust)
    @show input.ch_thrust
-   data.thrust = rawdata[nrow_head+1:end,input.ch_thrust+1]
+   rawdata.thrust = buffer[nrow_head+1:end,input.ch_thrust+1]
 
-   return data
+   return rawdata
 end

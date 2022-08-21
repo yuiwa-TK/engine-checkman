@@ -1,6 +1,6 @@
 include("./math.jl")
-using Plots
-using Printf
+# using Plots
+# using Printf
 
 """ 
  compute work time , based on threshold_worktime
@@ -35,9 +35,10 @@ function calc_worktime(time::Time,thrust::Thrust,input::Input; splot::Bool)
         plt=scatter!([time.stem],[thrust.stem],color="blue",label="stem")
         plt=annotate!([time.stem],[thrust.stem],text(ss,:left,8,:blue))
         display(plt)
-        savefig(plt,input.workdir*"worktime_thrust_curve.pdf")
+        savefig(plt,input.workdir*"worktime_thrust_curve.html")
     end
 
+    @info "\nstart:$(time.work_start),end:$(time.work_end),Work_time=$work_time"
     return work_time
 end
 
@@ -62,6 +63,6 @@ function calc_totalimpulse(t::Time,th::Thrust,input::Input; mode)
         total_impulse=integral_trapezoid(t,th,timerange)
     end
 
-    @show total_impulse
+    @info "\n mode = $mode,Total Impulse=$total_impulse"
     return total_impulse
 end

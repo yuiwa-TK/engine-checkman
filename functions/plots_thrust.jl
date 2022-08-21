@@ -1,6 +1,10 @@
 using Plots
 
+"""
+提出用
+"""
 function plot_thrustcurve(time::Time,thrust::Thrust,filename::String)
+    gr()
     dt      = time.data[2]-time.data[1]
     ids     = argmin(abs.(time.data.-time.work_start))
     ide     = argmin(abs.(time.data.-time.work_end))
@@ -53,10 +57,12 @@ end
 """
 生データをプロット
 """
-function plot_thrustcurve(data::Data)
+function plot_thrustcurve(data::RawData)
+    plotly()
     p=plot(data.time,data.thrust,
         xlabel="Time[-]",ylabel="Thrust[-]",Title="rawdata(thrust)")
     display(p)
+    savefig(p,input.workdir*"rawdata.html") #plot with plotly()
 end
 
 
